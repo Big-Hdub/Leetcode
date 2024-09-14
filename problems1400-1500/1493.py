@@ -17,37 +17,20 @@
 # Input: nums = [1,1,1]
 # Output: 2
 # Explanation: You must delete one element.
-
 from typing import List
 
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
-        zero1,zero2,length,longest=0,0,len(nums),0
-        if nums[0]==1:
-            longest=1
+        left,zeros,length,longest=0,0,len(nums),0
         for i in range(length):
             if nums[i]==0:
-                if nums[zero2]==1:
-                    longest=max(longest,i-1)
-                    zero2=i
-                elif nums[zero1]==1:
-                    longest=max(longest,i-2)
-                    zero1=zero2
-                    zero2=i
-                else:
-                    longest=max(longest,i-zero1-2)
-                    zero1=zero2
-                    zero2=i
-            else:
-                if nums[zero1]==1:
-                    longest=max(longest,i)
-                elif nums[zero2]==1:
-                    longest=max(longest,i-zero1-1)
-                elif i==length-1:
-                    longest=max(longest,i-zero1-1)
-                else:
-                    longest=max(longest, i-1)
-        return longest
+                zeros+=1
+            while zeros>1:
+                if nums[left]==0:
+                    zeros-=1
+                left+=1
+            longest=max(longest, i-left+1-zeros)
+        return longest-1 if longest==length else longest
 
 
 test=Solution()
