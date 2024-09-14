@@ -25,23 +25,19 @@
 
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        p1,p2,count=0,0,0
-        while p1<len(text1) and p2<len(text2):
-            if text1[p1]==text2[p2]:
-                count+=1
-            else:
-                for i in range(max(len(text1)-p1, len(text2)-p2)):
-                    if len(text2)>p2+i and text1[p1]==text2[p2+i]:
-                        count+=1
-                        p2+=i
-                        break
-                    elif len(text1)>p1+i and text2[p2]==text1[p1+i]:
-                        count+=1
-                        p1+=i
-                        break
-            p1+=1
-            p2+=1
-        return count
+        dp=[0]*len(text1)
+        longest=0
+
+        for c in text2:
+            curr_length=0
+            for i, val in enumerate(dp):
+                if curr_length < val:
+                    curr_length=val
+                elif c==text1[i]:
+                    dp[i]=curr_length+1
+                    longest=max(longest, curr_length+1)
+        return longest
+
 
 test=Solution()
 text1 = "abcde"
