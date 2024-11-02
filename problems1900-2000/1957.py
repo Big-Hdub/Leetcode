@@ -60,3 +60,6 @@ print(makeFancyString(s)) # Output: "aabaa"
 
 s = "aabaabaabaa"
 print(makeFancyString(s)) # Output: "aabaabaabaa"
+
+# Time Complexity: O(n), where n is the length of the string. We iterate through the string once.
+# Space Complexity: O(n), where n is the length of the string. We store the resulting characters in a new string.
