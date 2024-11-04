@@ -86,7 +86,7 @@ print(solution.compressedString(word))  # Output: "8y3f4c2q2w8f8r5a9y"
 
 # Space Complexity: O(n)
 # The space complexity is O(n) because we are storing the compressed string, which in the worst case can be as long as the input string where
-# a 1 is in front of every character if there are no repeating characters.
+# a 1 is in front of every character if there are no repeating characters and O(2n) simplifies to O(n).
 
 # Time Complexity: O(n)
 # The time complexity is O(n) because we are iterating through the input string once.
